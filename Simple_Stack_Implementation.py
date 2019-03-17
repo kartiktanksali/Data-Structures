@@ -32,8 +32,7 @@ def pop():
         element = lst[top]
         top-=1
         return f"{element} popped"
-    else:
-        return "Stack is empty, cannot pop"
+    
 
 def tops():
     global top
@@ -50,7 +49,7 @@ def display():
         for i in range(top+1):
             print(lst[i],end=" ")
     else:
-        print("Stack is empty to be displayed")
+        print("Stack is now empty")
         
 
 while(ch<5):
