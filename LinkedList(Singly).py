@@ -83,6 +83,20 @@ class LinkedList:
         prev.next = temp.next
         print("Element Deleted")
         
+        
+    def findLength(self):
+        count=0
+        if self.head==None:
+            return 0
+        if self.head.next==None:
+            return 1
+        
+        temp = self.head
+        while(temp):
+            temp = temp.next
+            count+=1
+        return count
+        
     def PrintList(self):
         if self.head==None:
             print("No Linked List present to print")
@@ -110,14 +124,15 @@ if __name__ == "__main__":
     
     ch=0
     llist = LinkedList()
-    while(ch<8):
+    while(ch<9):
         print("1) Push an element(Insert at front")
         print("2) Append an element(Insert at Rear")
         print("3) Insert at a position")
         print("4) Delete a key")
         print("5) Delete at a position")
-        print("6) Print the List")
-        print("7) Delete the LinkedList")
+        print("6) Length of the List")
+        print("7) Print the List")
+        print("8) Delete the LinkedList")
         print("Enter your choice: ")
         ch = int(input())
     
@@ -140,9 +155,13 @@ if __name__ == "__main__":
             pos = int(input("Enter the position from the element should be deleted: "))
             llist.deletePos(pos)
         elif ch==6:
-            llist.PrintList()
+            res = llist.findLength()
+            print("The length of the list: ",res)
         elif ch==7:
+            llist.PrintList()
+        elif ch==8:
             llist.deleteList()
+       
     
     
     
