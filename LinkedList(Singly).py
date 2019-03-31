@@ -96,6 +96,21 @@ class LinkedList:
             temp = temp.next
             count+=1
         return count
+    
+    def checkElement(self,key):
+        if self.head==None:
+            print("No element present to search")
+        elif self.head==key:
+            print("Element Found")
+        else:
+            temp = self.head
+            while(temp):
+                if temp.data==key:
+                    print("Element Found")
+                    return
+                else:
+                    temp = temp.next
+            print("Element not Found")
         
     def PrintList(self):
         if self.head==None:
@@ -117,6 +132,8 @@ class LinkedList:
                 temp = temp.next
                 del prev.data
             print("List Deleted")
+            
+    
     
         
 
@@ -131,8 +148,9 @@ if __name__ == "__main__":
         print("4) Delete a key")
         print("5) Delete at a position")
         print("6) Length of the List")
-        print("7) Print the List")
-        print("8) Delete the LinkedList")
+        print("7) Check for a element")
+        print("8) Print the List")
+        print("9) Delete the LinkedList")
         print("Enter your choice: ")
         ch = int(input())
     
@@ -158,8 +176,11 @@ if __name__ == "__main__":
             res = llist.findLength()
             print("The length of the list: ",res)
         elif ch==7:
-            llist.PrintList()
+            ele = int(input("Enter an element to be searched: "))
+            llist.checkElement(ele)
         elif ch==8:
+            llist.PrintList()
+        elif ch==9:
             llist.deleteList()
        
     
