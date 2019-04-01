@@ -88,7 +88,7 @@ if __name__ == "__main__":
     llist = LinkedList()
     
     ch=0
-    while(ch<5):
+    while(ch<6):
         print("1) Push a Node")
         print("2) Append a Node")
         print("3) Delete a node from front")
@@ -106,6 +106,8 @@ if __name__ == "__main__":
         elif ch==3:
             llist.deleteFront()
         elif ch==4:
+            llist.deleteRear()
+        elif ch==5:
             llist.printList()
             
             
