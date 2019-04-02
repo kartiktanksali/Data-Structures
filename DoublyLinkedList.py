@@ -62,8 +62,28 @@ class LinkedList:
                temp.prev.next = None
                
         
-       print("Element Deleted")
-            
+           print("Element Deleted")
+     
+   def insertPos(self,pos,data):
+       new_node = Node(data)
+       if self.head == None:
+           self.head = new_node
+           print("Element Inserted")
+       else:
+           temp = self.head
+           for i in range(1,pos):
+               temp = temp.next
+           if temp.next==None:
+               temp.next = new_node
+               new_node.prev = temp
+           else:
+               next_node = temp.next
+               temp.next = new_node
+               next_node.prev = new_node
+               new_node.next = next_node
+               new_node.prev = next_node
+                
+               print("Element inserted")
     
    def printList(self):
        temp = llist.head
@@ -79,12 +99,13 @@ if __name__=="__main__":
     
     ch=0
     
-    while(ch<6):
+    while(ch<7):
         print("1) Push an element")
         print("2) Append an element")
         print("3) Delete an element in the front")
         print("4) Delete an element from the rear")
-        print("5) Print list")
+        print("5) Insert at a position")
+        print("6) Print list")
         
         ch = int(input("Enter your choice: "))
         print()
@@ -100,5 +121,9 @@ if __name__=="__main__":
         elif ch==4:
             llist.deleteRear()
         elif ch==5:
+            ele = int(input("Enter the element to be inserted: "))
+            pos = int(input("Enter the position: "))
+            llist.insertPos(pos,ele)
+        elif ch==6:
             llist.printList()
         
