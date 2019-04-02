@@ -59,7 +59,6 @@ class LinkedList:
             temp.next = self.head
             print("Element deleted from rear")
             
-            
        
     
             
@@ -76,12 +75,7 @@ class LinkedList:
                 
                 
                 
-            
         
-        
-   
-    
-    
     
 if __name__ == "__main__":
     
