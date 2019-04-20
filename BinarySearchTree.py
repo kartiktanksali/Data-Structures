@@ -5,7 +5,7 @@ Created on Tue Apr 16 22:24:56 2019
 
 @author: kartiktanksali
 """
-
+count = 0
 
 
 class Node:
@@ -57,11 +57,24 @@ class Tree:
         
         print("Minimum Value is ",temp.data)
         return temp
+    
+    
+    def maximum(self,root):
+        if root == None:
+            print("No tree present")
+            return 0
+        else:
+            temp = root
+            while(temp.right!=None):
+                temp = temp.right
+        print("Maximum Value is ",temp.data)
+        return temp
         
         
     def deleteNode(self,root,data):
         if root == None:
             print("No elements to delete")
+            return root
                 
         if data < root.data:
             root.left = self.deleteNode(root.left,data)
@@ -84,9 +97,23 @@ class Tree:
             root.right = self.deleteNode(root.right,temp.data)
             
         return root
+        
+    
+    
+    def getCount(self,root):
+        if root == None:
+            return 0
+        else:
+            return self.getCount(root.left) + self.getCount(root.right) + 1
+        
+    def getHeight(self,root):
+        if root == None:
+            return -1
+        else:
+            return max(self.getHeight(root.left),self.getHeight(root.right)) + 1
                     
-                    
-                
+            
+            
             
     def search(self,root,data):
         if root is None or root.data == data:
@@ -113,11 +140,20 @@ class Tree:
         
         
 tree = Tree()
-print("\n 1) Insert Node \n 2) Search Node \n 3) Find Minimum Value \n 4) Delete Node \n 5) InOrder Traversal")
 
 ch=0
 
-while(ch<6):
+while(ch<9):
+    print("\n 1) Insert Node")
+    print("2) Search Node")
+    print("3) Find Minimum Value")
+    print("4) Find Maximum Value")
+    print("5) Number of Nodes")
+    print("6) Delete Node")
+    print("7) Find height of the tree")
+    print("8) InOrder Traversal")
+    
+    
     ch = int(input("Enter your choice: "))
     if ch==1:
         ele = int(input("Enter the element to be inserted in tree: "))
@@ -136,11 +172,21 @@ while(ch<6):
         root = tree.getRoot()
         tree.minimum(root)
     elif ch==4:
+        root = tree.getRoot()
+        tree.maximum(root)
+    elif ch==5:
+        root = tree.getRoot()
+        res = tree.getCount(root)
+        print("Number of nodes present in tree: ",res)
+    elif ch==6:
         ele = int(input("Enter the element to be deleted: "))
         root = tree.getRoot()
         tree.deleteNode(root,ele)
-        
-    elif ch==5:
+    elif ch==7:
+        root = tree.getRoot()
+        res = tree.getHeight(root)
+        print("The height of the tree is: ",res)
+    elif ch==8:
         root = tree.getRoot()
         tree.inorder(root)
 
