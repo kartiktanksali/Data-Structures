@@ -113,8 +113,6 @@ class Tree:
             return max(self.getHeight(root.left),self.getHeight(root.right)) + 1
                     
             
-            
-            
     def search(self,root,data):
         if root is None or root.data == data:
             return root
@@ -124,9 +122,22 @@ class Tree:
             elif data > root.data:
                 return self.search(root.right,data)
             
+    def breadthFirstSearch(self,root):
+        if root == None:
+            return 
+        else:
+            queue = []
+            queue.append(root)
+            while(len(queue)>0):
+                current = queue[0]
+                print(current.data)
+                if current.left != None:
+                    queue.append(current.left)
+                if current.right != None:
+                    queue.append(current.right)
+                queue.pop(0)
+                            
             
-            
-    
     def inorder(self,root):
         if root:
             self.inorder(root.left)
@@ -143,7 +154,7 @@ tree = Tree()
 
 ch=0
 
-while(ch<9):
+while(ch<10):
     print("\n 1) Insert Node")
     print("2) Search Node")
     print("3) Find Minimum Value")
@@ -151,7 +162,8 @@ while(ch<9):
     print("5) Number of Nodes")
     print("6) Delete Node")
     print("7) Find height of the tree")
-    print("8) InOrder Traversal")
+    print("8) BFS - Traversal")
+    print("9) InOrder Traversal")
     
     
     ch = int(input("Enter your choice: "))
@@ -187,6 +199,9 @@ while(ch<9):
         res = tree.getHeight(root)
         print("The height of the tree is: ",res)
     elif ch==8:
+        root = tree.getRoot()
+        tree.breadthFirstSearch(root)
+    elif ch==9:
         root = tree.getRoot()
         tree.inorder(root)
 
