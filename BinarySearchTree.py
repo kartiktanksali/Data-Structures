@@ -6,7 +6,8 @@ Created on Tue Apr 16 22:24:56 2019
 @author: kartiktanksali
 """
 count = 0
-
+INT_MAX = 4294967296
+INT_MIN = -4294967296
 
 class Node:
     
@@ -145,11 +146,22 @@ class Tree:
             self.inorder(root.right)
             
             
+    def isBST(self,root):
+        return (self.isBSTUtil(root,INT_MIN,INT_MAX))
+    
+    
+    def isBSTUtil(self,root,mini,maxi):
+        if root == None:
+            return True
+        
+        if root.data < mini or root.data > maxi:
+            return False
+        
+        return (self.isBSTUtil(root.left,mini,root.data) and self.isBSTUtil(root.right,node.data,maxi))
+        
+                
             
             
-        
-        
-        
 tree = Tree()
 
 ch=0
